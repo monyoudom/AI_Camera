@@ -1,0 +1,23 @@
+{% extends "Index/basic.html"%}
+
+
+{% block location %}
+{% for location in locations %}
+
+  <li><a href="{% url 'camera_by_location' locationid=location.id %}"> {{location.place}}   </a></li>{% endfor %}
+{% endblock %}
+
+{% block content %}
+
+
+<h1>  Introductions </h1>
+
+ <p>
+            
+               1.  First you need to create the Location by click on <a href="{% url 'addlocation' %}">Location</a>, click on Add
+                 then input name of the Location click OK button . <br><br>
+               2.  Second go to <a href="{% url  'addcamera' %}">Camera</a> to input IP of the camera you use and specify the name of it,
+                 select the Location you want to put and Choose the Function of the camera you want (or both)
+               
+            </p>
+{% endblock %}

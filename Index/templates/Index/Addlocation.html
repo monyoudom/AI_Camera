@@ -1,0 +1,25 @@
+{% extends  "Index/basic.html" %}
+{% block location %}
+{% for location in locations %}
+
+  <li><a href="{% url 'camera_by_location' locationid=location.id %}"> {{location.place}}   </a></li>
+{% endfor %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<form class="second3" action="{% url 'addlocation'%}" method=post >
+        {% csrf_token %}
+                <label for="location">Location </label>
+                <br>
+                <br>
+                <input type="text" value="" name="place" style="color:green;" ><br><br>
+                
+                
+                <input type="submit" name="submit" value="OK" style="align-content: center;" >
+            </form>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "Index/basic.html" %}
+{% block location %}
+{% for location in locations %}
+
+  <li><a href="{% url 'camera_by_location' locationid=location.id %}"> {{location.place}}   </a></li>
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+
+ <form class="second3" action="" method="POST">
+                {% csrf_token %}
+                IP Camera :<br>
+                <input type="text" name="ip" style="color:green;" ><br><br>
+                Camera Name : <br>
+                <input type="text" name="name" style="margin-top:6px;" ><br><br>
+                username :<br>
+                <input type="text" name="auth_uname" style="color:green;" ><br><br>
+                 password :<br>
+                <input type="password" name="auth_pwd" style="color:green;" ><br><br>
+
+
+                Location :       
+                <select name="location" style="margin-top:20px">
+                    <option value="" disabled></option>
+                    {% for location in locations %}
+                        <option value="{{ location.pk }}">{{ location.place }}</option>
+                    {% endfor %}
+                    
+                </select><br><br><br>
+                
+                Choose Function:<br>
+                <input type="checkbox" value="0" name="option[]">Face Recognition<br>
+                <input type="checkbox" value="1" name="option[]">Object Detection<br><br>
+                
+                <input type="submit" name="submit" value="OK" style="align-content: center;">
+            </form>
+
+{% endblock %}

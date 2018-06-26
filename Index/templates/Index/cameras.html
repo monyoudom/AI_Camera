@@ -1,0 +1,18 @@
+{% extends "Index/basic.html" %}
+
+{% block location %}
+    {% for location in locations %}
+
+     <li><a href="{% url 'camera_by_location' locationid=location.id %}"> {{location.place}}   </a></li>
+    {% endfor %}
+{% endblock %}
+
+
+{% block content %}
+	{% for cam in CameraLists %}
+        <img  src="{% url 'video_streamer' camID=cam.id  %}" width="200px" height="210px"/>
+        <p> {{ cam.name }}</p>
+       
+   {% endfor %}
+
+{% endblock %}
